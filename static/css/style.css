@@ -1,0 +1,201 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: row; /* Ensure the layout stacks vertically on mobile */
+}
+
+.container {
+  display: flex;
+  flex-direction: row; /* Stack the elements vertically */
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Chatbox */
+.chatbox {
+  width: 100%; /* Make it 100% width */
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-height: 0;
+}
+
+#chatMessages {
+  flex: 1;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 10px;
+  background: #e9e9e9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message {
+  max-width: 70%;
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 15px;
+  word-wrap: break-word;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #007bff;
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+.chat-message.bot {
+  align-self: flex-start;
+  background: #e0e0e0;
+  color: black;
+  border-bottom-left-radius: 0;
+}
+
+#chatInputDiv {
+  display: flex;
+  margin-top: auto; /* Pushes input box to the bottom */
+}
+
+#chatInput {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#chatInputDiv button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: #28a745;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#chatInputDiv button:hover {
+  background: #1e7e34;
+}
+
+/* Task Manager */
+.task-manager {
+  width: 100%; /* Make it 100% width */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  min-height: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Task Input */
+#taskInputDiv {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+#taskTitle {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#taskInputDiv button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#taskInputDiv button:hover {
+  background: #0056b3;
+}
+
+/* Task Lists Columns */
+.task-columns {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  flex-wrap: wrap; /* Ensure it wraps on smaller screens */
+}
+
+.task-column {
+  width: 48%;
+  margin-bottom: 20px; /* Add some space between columns on smaller screens */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+li button {
+  margin-left: 5px;
+  padding: 5px 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+li button:hover {
+  opacity: 0.8;
+}
+
+/* Media Queries for Small Screens (Mobile) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack the elements vertically */
+  }
+
+  .task-manager,
+  .chatbox {
+    width: 80%; /* Full width on mobile */
+    margin-bottom: 20px; /* Space between sections */
+  }
+
+  .task-columns {
+    flex-direction: column; /* Stack task columns vertically on mobile */
+  }
+
+  .task-column {
+    width: 80%; /* Ensure each task column takes full width on small screens */
+  }
+}

@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from openai import OpenAI
 from dotenv import load_dotenv
 from flask_cors import CORS
@@ -18,7 +18,7 @@ MODEL = "gpt-3.5-turbo"
 
 
 # --- Flask setup ---
-app = Flask(__name__, static_folder="static")
+app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # --- In-memory task store ---
@@ -112,7 +112,7 @@ tools = [
 # --- Serve frontend ---
 @app.route("/")
 def index():
-    return send_from_directory("static", "index.html")
+    return render_template("index.html")
 
 # --- REST API endpoints ---
 @app.route("/api/v1/todos", methods=["POST"])
@@ -197,6 +197,6 @@ def chat():
 
 
 if __name__ == "__main__":
-    os.makedirs("static", exist_ok=True)
-    print("Serving on http://127.0.0.1:5000")
+    # os.makedirs("static", exist_ok=True)
+    # print("Serving on http://127.0.0.1:5000")
     app.run(debug=True)
