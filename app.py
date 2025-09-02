@@ -145,12 +145,23 @@ def api_delete_task(task_id):
 def chat():
     user_message = request.json.get("message")
 
+    SYSTEM_PROMPT = {
+    "role": "system",
+    "content": (
+        "You are an AI Task Manager assistant. "
+        "You can help users manage tasks by adding, listing, completing, or deleting them. "
+        "Always confirm actions and use a friendly, concise tone."
+        )
+    }
+
+
     response = client.chat.completions.create(
         model=MODEL,
-        messages=[{"role": "user", "content": user_message}],
+        messages=[SYSTEM_PROMPT,{"role": "user", "content": user_message}],
         functions=tools,
         function_call="auto"
     )
+
 
     message = response.choices[0].message  # ChatCompletionMessage object
 
