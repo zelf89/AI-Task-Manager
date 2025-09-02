@@ -1,3 +1,4 @@
+AI-Task-Manager - README Template
 # AI-Task-Manager
 
 A streamlined web-based Task Manager powered by AI — manage your tasks with intelligent assistance, automation, and intuitive UI.
@@ -17,6 +18,8 @@ A streamlined web-based Task Manager powered by AI — manage your tasks with in
 - **Lightweight server app** — implemented in a single `app.py` for simplicity.
 
 ##  Project Structure
+
+
 
 AI-Task-Manager/
 ├── app.py # Main Python application entry point
@@ -49,6 +52,7 @@ OPENAI_API_KEY=your_openai_api_key
 # (Optional) Database or storage
 DATABASE_URL=sqlite:///tasks.db
 
+
 Usage:
 
 Rename .env.example to .env (if provided), or create .env manually.
@@ -58,12 +62,14 @@ Populate with valid values for your environment and services.
 Ensure .env is included in .gitignore to avoid leaking secrets.
 
 Use a library like python-dotenv in your app.py to load variables:
+
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 secret = os.getenv("SECRET_KEY")
 openai_key = os.getenv("OPENAI_API_KEY")
+
 REST API
 
 The app likely provides endpoints for task operations. Here's a basic sketch:
@@ -79,7 +85,6 @@ curl -X POST http://localhost:5000/api/tasks \
      -H "Content-Type: application/json" \
      -d '{"title": "Write README", "description": "Draft the project README"}'
 
-Example: List Tasks
 Example: List Tasks
 curl http://localhost:5000/api/tasks
 
