@@ -41,7 +41,7 @@ AI-Task-Manager/
 
 To manage sensitive settings and environment-specific configuration, create a `.env` file in your project root with the following template:
 
-```dotenv
+``dotenv
 # Server settings
 FLASK_ENV=development       # or "production"
 SECRET_KEY=your_secret_key  # Python web framework secret key
