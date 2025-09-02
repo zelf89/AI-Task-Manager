@@ -33,7 +33,10 @@ def addTask(title, description=""):
     return task
 
 def getTasks():
-    return tasks
+    if tasks:
+        return tasks
+    else:
+        return {"error": "There is no Task "}
 
 def completeTask(task_id):
     for task in tasks:
