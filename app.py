@@ -1,21 +1,23 @@
 import os
 import json
-from flask import Flask, request, jsonify, send_from_directory, render_template
+from flask import Flask, request, jsonify, render_template
 from openai import OpenAI
 from dotenv import load_dotenv
 from flask_cors import CORS
-import re
+
 
 # --- Load environment variables ---
-load_dotenv()
+# load_dotenv()
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"), override=True)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+print(OPENAI_API_KEY)
 if not OPENAI_API_KEY:
     raise RuntimeError("❌ OpenAI API key not found! Add it to your .env file.")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 MODEL = "gpt-3.5-turbo"
-
+tasks = []
 
 # --- Flask setup ---
 app = Flask(__name__)
@@ -199,6 +201,9 @@ def chat():
                 pretty = f"Task {result['id']}: {result['title']} - {'✅ Completed' if result.get('completed') else '❌ Pending'}"
             elif result.get("status") == "deleted":
                 pretty = "Task deleted successfully."
+            elif "error" in result:
+                # ✅ Handle structured error message
+                pretty = f"⚠️ {result['error']}"
             else:
                 pretty = json.dumps(result)
         else:

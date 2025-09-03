@@ -16,7 +16,7 @@
       <div class="chatbox">
         <div id="chatMessages"></div>
         <div id="chatInputDiv">
-          <input type="text" id="chatInput" placeholder="Ask AI..." />
+          <input type="text" id="chatInput" placeholder="Ask AI..." onkeydown="checkEnter(event)"/>
           <button onclick="sendChat()">Send</button>
         </div>
       </div>

@@ -68,6 +68,13 @@ async function deleteTask(id) {
   loadTasks();
 }
 
+function checkEnter(event) {
+  console.log(event.key);
+  if (event.key === "Enter") {
+    sendChat();
+  }
+}
+
 // --- Chatbot ---
 async function sendChat() {
   const input = document.getElementById("chatInput");
